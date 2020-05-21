@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/forward_widget.dart';
 
 import 'onboarding2.dart';
 
 class Onboarding1 extends StatelessWidget {
+
+  SizeConfig c = SizeConfig();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,11 +17,12 @@ class Onboarding1 extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 50,
+              //height: 50,
+              height: c.height(50),
             ),
             Container(
-              width: 100,
-              height: 100,
+              width: c.width(100),
+              height: c.height(100),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
@@ -30,8 +34,8 @@ class Onboarding1 extends StatelessWidget {
               overflow: Overflow.visible,
               children: <Widget>[
                 Container(
-                  width: 365,
-                  height: 365,
+                  width: c.width(365),
+                  height: c.height(365),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -41,49 +45,50 @@ class Onboarding1 extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 350,
-                  left: 170,
+                  top: c.height(350),
+                  left: c.width(170),
                   child: Container(
-                    width: 40,
-                    height: 40,
+                    width: c.width(40),
+                    height: c.height(40),
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/icons/egitim_stack.png'),
                       ),
                     ),
-                    child: Center(child: Text('+', style: TextStyle(color: Colors.white, fontSize: 30), )),
+                    child: Center(child: Text('+', style: TextStyle(color: Colors.white,
+                        fontSize: c.font(30)), )),
                   ),
                 )
               ],
             ),
             SizedBox(
-              height: 50,
+              height: c.height(50),
             ),
             Text(
               "Aradığın İş Burada",
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Color(0xff000000),
-                fontSize: 37,
+                fontSize: c.font(37),
                 fontWeight: FontWeight.w800,
                 fontStyle: FontStyle.normal,
               ),
             ),
             SizedBox(
-              height: 10,
+              height: c.height(10),
             ),
             Text(
               "Güzellik İş İlanlarında profil oluştur \nistediğin işi hızlıca bul",
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Color(0xff9f9f9f),
-                fontSize: 14,
+                fontSize: c.font(14),
                 fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.normal,
               ),
             ),
             SizedBox(
-              height: 50,
+              height: c.height(50),
             ),
             GestureDetector(onTap: () {
               Navigator.push(

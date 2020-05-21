@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:igi/pages/onboarding.dart';
 import 'package:igi/pages/onboarding3.dart';
+import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/forward_widget.dart';
 
 class Onboarding2 extends StatelessWidget {
+  SizeConfig c = SizeConfig();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +16,7 @@ class Onboarding2 extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 50,
+              height: c.height(50),
             ),
             Container(
               width: 100,
@@ -30,8 +32,8 @@ class Onboarding2 extends StatelessWidget {
               overflow: Overflow.visible,
               children: <Widget>[
                 Container(
-                  width: 365,
-                  height: 365,
+                  width: c.width(365),
+                  height: c.height(365),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -41,11 +43,11 @@ class Onboarding2 extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 350,
-                  left: 120,
+                  top: c.height(350),
+                  left: c.width(120),
                   child: Container(
-                    width: 112.6669921875,
-                    height: 45,
+                    width: c.width(112.6669921875),
+                    height: c.height(45),
                     decoration: BoxDecoration(
                         color: Color(0xffffd500),
                         borderRadius: BorderRadius.circular(23)),
@@ -55,7 +57,7 @@ class Onboarding2 extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xff000000),
-                          fontSize: 20,
+                          fontSize: c.font(20),
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
                         ),
@@ -66,33 +68,33 @@ class Onboarding2 extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 50,
+              height: c.height(50),
             ),
             Text(
               "Eğitim Burada",
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Color(0xff000000),
-                fontSize: 37,
+                fontSize: c.font(37),
                 fontWeight: FontWeight.w800,
                 fontStyle: FontStyle.normal,
               ),
             ),
             SizedBox(
-              height: 10,
+              height: c.height(10),
             ),
             Text(
               "Güzellik İş İlanlarında MEB onaylı\neğitim alabilirsin hem de iş garantili",
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Color(0xff9f9f9f),
-                fontSize: 14,
+                fontSize: c.font(14),
                 fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.normal,
               ),
             ),
             SizedBox(
-              height: 50,
+              height: c.height(50),
             ),
             GestureDetector(
                 onTap: () {

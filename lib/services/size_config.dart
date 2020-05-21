@@ -12,6 +12,9 @@ class SizeConfig{
   static double heightMultiplier;
   static double widthMultiplier;
 
+  double _iphone_11_height = 8.96;
+  double _iphone_11_width = 4.14;
+
   void init(BoxConstraints constraints, Orientation orientation){
     if(orientation == Orientation.portrait){
       _screenWidth = constraints.maxWidth;
@@ -31,5 +34,15 @@ class SizeConfig{
 
     print('height: ' + _blockSizeVertical.toString());
     print('width: ' + _blockSizeHorizontal.toString());
+  }
+
+  double height(double h){
+    return (h/_iphone_11_height)*_blockSizeVertical;
+  }
+  double width(double w){
+    return (w/_iphone_11_width)*_blockSizeHorizontal;
+  }
+  double font(double f){
+    return (f/_iphone_11_height)*_blockSizeVertical;
   }
 }
