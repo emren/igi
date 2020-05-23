@@ -11,6 +11,8 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
+  SizeConfig c = SizeConfig();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,14 +23,14 @@ class _OnboardingState extends State<Onboarding> {
         child: Column(
           children: <Widget>[
             SizedBox(
-              //height: 150,
-              height: 16.74 * SizeConfig.heightMultiplier,
+              height: c.height(150),
+              //height: 16.74 * SizeConfig.heightMultiplier,
             ),
             Padding(
-              padding: EdgeInsets.only(left:50.0),
+              padding: EdgeInsets.only(left: c.width(50.0)),
               child: Container(
-                  width: 280,
-                  height: 256,
+                  width: c.width(280),
+                  height: c.height(256),
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       //image: AssetImage('assets/pics/igi_entry.png'),
@@ -37,23 +39,26 @@ class _OnboardingState extends State<Onboarding> {
                   )),
             ),
             SizedBox(
-              height: 150,
+              height: c.height(150),
               //height: 3.35 * SizeConfig.heightMultiplier,
             ),
             Row(
               children: <Widget>[
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => GirisFirma()),
                     );
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(left: 60.0, bottom: 20, right: 20),
+                    padding: EdgeInsets.only(
+                        left: c.width(60.0),
+                        bottom: c.height(20),
+                        right: c.width(20)),
                     child: Container(
-                      width: 136,
-                      height: 45,
+                      width: c.width(136),
+                      height: c.height(45),
                       decoration: BoxDecoration(
                         color: Color(0xff395aff),
                         borderRadius: BorderRadius.circular(23),
@@ -71,7 +76,7 @@ class _OnboardingState extends State<Onboarding> {
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Color(0xffffffff),
-                            fontSize: 20,
+                            fontSize: c.font(20),
                             fontWeight: FontWeight.w700,
                             fontStyle: FontStyle.normal,
                           ),
@@ -81,17 +86,17 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => GirisAday()),
                     );
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.only(bottom: c.height(20)),
                     child: Container(
-                      width: 136,
-                      height: 45,
+                      width: c.width(136),
+                      height: c.height(45),
                       decoration: BoxDecoration(
                         color: Color(0xffffd500),
                         borderRadius: BorderRadius.circular(23),
@@ -109,7 +114,7 @@ class _OnboardingState extends State<Onboarding> {
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Color(0xff000000),
-                            fontSize: 20,
+                            fontSize: c.font(20),
                             fontWeight: FontWeight.w700,
                             fontStyle: FontStyle.normal,
                           ),
@@ -121,15 +126,15 @@ class _OnboardingState extends State<Onboarding> {
               ],
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Giris()),
                 );
               },
               child: Container(
-                width: 300,
-                height: 45,
+                width: c.width(300),
+                height: c.height(45),
                 decoration: BoxDecoration(
                   color: Color(0xff395aff),
                   borderRadius: BorderRadius.circular(23),
@@ -147,7 +152,7 @@ class _OnboardingState extends State<Onboarding> {
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xffffffff),
-                      fontSize: 20,
+                      fontSize: c.font(20),
                       fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.normal,
                     ),

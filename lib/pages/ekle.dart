@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:igi/pages/ilan_ekle.dart';
+import 'package:igi/services/size_config.dart';
 
 class Ekle extends StatefulWidget {
   @override
@@ -7,6 +8,8 @@ class Ekle extends StatefulWidget {
 }
 
 class _EkleState extends State<Ekle> {
+  SizeConfig c = SizeConfig();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,10 +20,14 @@ class _EkleState extends State<Ekle> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.only(
+                top: c.height(10.0),
+                bottom: c.height(10.0),
+                left: c.width(10),
+                right: c.width(10)),
             child: Container(
-              width: 208.607421875,
-              height: 41,
+              width: c.width(208.607421875),
+              height: c.height(41),
               decoration: BoxDecoration(
                   color: Color(0xffffd500),
                   borderRadius: BorderRadius.circular(23)),
@@ -30,7 +37,7 @@ class _EkleState extends State<Ekle> {
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     color: Color(0xff000000),
-                    fontSize: 14,
+                    fontSize: c.font(14),
                     fontWeight: FontWeight.w700,
                     fontStyle: FontStyle.normal,
                   ),
@@ -39,17 +46,21 @@ class _EkleState extends State<Ekle> {
             ),
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => IlanEkle()),
               );
             },
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.only(
+                  top: c.height(10.0),
+                  bottom: c.height(10.0),
+                  left: c.width(10),
+                  right: c.width(10)),
               child: Container(
-                width: 208.607421875,
-                height: 41,
+                width: c.width(208.607421875),
+                height: c.height(41),
                 decoration: BoxDecoration(
                     color: Color(0xff395aff),
                     borderRadius: BorderRadius.circular(23)),
@@ -59,7 +70,7 @@ class _EkleState extends State<Ekle> {
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xffffffff),
-                      fontSize: 14,
+                      fontSize: c.font(14),
                       fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.normal,
                     ),

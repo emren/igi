@@ -19,8 +19,8 @@ class Onboarding2 extends StatelessWidget {
               height: c.height(50),
             ),
             Container(
-              width: 100,
-              height: 100,
+              width: c.width(100),
+              height: c.height(100),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
