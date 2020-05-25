@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:igi/pages/ozgecmis7.dart';
 import 'package:igi/services/size_config.dart';
 
 import 'ozgecmis4.dart';
+import 'ozgecmis_cv.dart';
 
-class Ozgecmis6 extends StatelessWidget {
+class Ozgecmis9 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig c = SizeConfig();
@@ -76,10 +76,10 @@ class Ozgecmis6 extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
-                "Şuan çalışıyor musun?",
+                "Başarıyla tamamladın :)",
                 style: TextStyle(
                   fontFamily: 'Poppins',
-                  color: Color(0xff707070),
+                  color: Color(0xff000000),
                   fontSize: c.font(23),
                   fontWeight: FontWeight.w700,
                   fontStyle: FontStyle.normal,
@@ -89,63 +89,45 @@ class Ozgecmis6 extends StatelessWidget {
             SizedBox(
               height: c.height(50),
             ),
-            Row(
-              children: <Widget>[
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Ozgecmis7()),
-                    );
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(left: c.width(100.0)),
-                    child: Container(
-                      width: c.width(77.607421875),
-                      height: c.height(28),
-                      decoration: BoxDecoration(
-                        color: Color(0xffffd500),
-                        borderRadius: BorderRadius.circular(23),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Evet",
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Color(0xff000000),
-                            fontSize: c.font(18),
-                            fontWeight: FontWeight.w700,
-                            fontStyle: FontStyle.normal,
-                          ),
-                        ),
-                      ),
+            Container(
+                width: c.width(112),
+                height: c.height(112),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/pics/tamam.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+            ),
+            SizedBox(
+              height: c.height(50),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OzgecmisCv()),
+                );
+              },
+              child: Container(
+                width: c.width(126),
+                height: c.height(34),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(23),
+                    color: Color(0xffffd500)),
+                child: Center(
+                  child: Text(
+                    "Görüntüle",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Color(0xff000000),
+                      fontSize: c.font(18),
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: c.width(20.0)),
-                  child: Container(
-                    width: c.width(77.607421875),
-                    height: c.height(28),
-                    decoration: BoxDecoration(
-                      color: Color(0xff395aff),
-                      borderRadius: BorderRadius.circular(23),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Hayır",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Color(0xffffffff),
-                          fontSize: c.font(18),
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ],
         ),

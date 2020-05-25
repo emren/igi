@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:igi/pages/aday_ayarlar.dart';
 import 'package:igi/pages/ozgecmis1.dart';
 import 'package:igi/services/size_config.dart';
+
+import 'basvuru.dart';
 
 class MenuAday extends StatelessWidget {
   @override
@@ -88,7 +91,12 @@ class MenuAday extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Basvuru()),
+                      );
+                    },
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: c.height(30),
@@ -233,7 +241,12 @@ class MenuAday extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AdayAyarlar()),
+                      );
+                    },
                     child: Padding(
                       padding: EdgeInsets.only(
                           top: c.height(30),

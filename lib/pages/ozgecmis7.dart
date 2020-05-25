@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:igi/pages/ozgecmis7.dart';
 import 'package:igi/services/size_config.dart';
 
 import 'ozgecmis4.dart';
+import 'ozgecmis8.dart';
 
-class Ozgecmis6 extends StatelessWidget {
+class Ozgecmis7 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig c = SizeConfig();
@@ -74,9 +74,9 @@ class Ozgecmis6 extends StatelessWidget {
               height: c.height(200),
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * 0.6,
               child: Text(
-                "Şuan çalışıyor musun?",
+                "Cinsiyetin Nedir ?",
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   color: Color(0xff707070),
@@ -95,7 +95,7 @@ class Ozgecmis6 extends StatelessWidget {
                   onTap: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Ozgecmis7()),
+                      MaterialPageRoute(builder: (context) => Ozgecmis8()),
                     );
                   },
                   child: Padding(
@@ -109,7 +109,7 @@ class Ozgecmis6 extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "Evet",
+                          "Erkek",
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             color: Color(0xff000000),
@@ -133,7 +133,7 @@ class Ozgecmis6 extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        "Hayır",
+                        "Kadın",
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xffffffff),
