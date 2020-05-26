@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:igi/pages/aday_ayarlar.dart';
 import 'package:igi/pages/favori_ilan.dart';
 import 'package:igi/pages/ozgecmis1.dart';
+import 'package:igi/pages/reklam_ver.dart';
 import 'package:igi/services/size_config.dart';
 
 import 'basvuru.dart';
 import 'egitim.dart';
+import 'firma_ayarlar.dart';
 
-class MenuAday extends StatelessWidget {
+class MenuFirma extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig c = SizeConfig();
@@ -108,7 +110,7 @@ class MenuAday extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Başvurularım",
+                            "İlanlarım",
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Color(0xff000000),
@@ -148,7 +150,7 @@ class MenuAday extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Özgeçmişim",
+                            "Üyelik Paketleri",
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Color(0xff000000),
@@ -188,7 +190,7 @@ class MenuAday extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Eğitimler",
+                            "Siparişlerim",
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Color(0xff000000),
@@ -216,7 +218,7 @@ class MenuAday extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FavoriIlan()),
+                        MaterialPageRoute(builder: (context) => ReklamVer()),
                       );
                     },
                     child: Padding(
@@ -228,7 +230,7 @@ class MenuAday extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            "Favori İlanlar",
+                            "Reklam  Ver",
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               color: Color(0xff000000),
@@ -256,7 +258,7 @@ class MenuAday extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => AdayAyarlar()),
+                        MaterialPageRoute(builder: (context) => FirmaAyarlar()),
                       );
                     },
                     child: Padding(

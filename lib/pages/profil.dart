@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:igi/pages/menu_firma.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/profil_widget.dart';
 
@@ -64,6 +65,7 @@ class _ProfilState extends State<Profil> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => MenuAday()),
+                      //MaterialPageRoute(builder: (context) => MenuFirma()),
                     );
                   },
                   child: Padding(
