@@ -64,8 +64,8 @@ class _ProfilState extends State<Profil> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MenuAday()),
-                      //MaterialPageRoute(builder: (context) => MenuFirma()),
+                      //MaterialPageRoute(builder: (context) => MenuAday()),
+                      MaterialPageRoute(builder: (context) => MenuFirma()),
                     );
                   },
                   child: Padding(

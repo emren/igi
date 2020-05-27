@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:igi/pages/aday_ayarlar.dart';
 import 'package:igi/pages/favori_ilan.dart';
+import 'package:igi/pages/ilanlar.dart';
 import 'package:igi/pages/ozgecmis1.dart';
 import 'package:igi/pages/reklam_ver.dart';
+import 'package:igi/pages/siparisler.dart';
+import 'package:igi/pages/uyelik_paketleri.dart';
 import 'package:igi/services/size_config.dart';
 
 import 'basvuru.dart';
@@ -98,7 +101,7 @@ class MenuFirma extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Basvuru()),
+                        MaterialPageRoute(builder: (context) => Ilanlar()),
                       );
                     },
                     child: Padding(
@@ -138,7 +141,7 @@ class MenuFirma extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Ozgecmis1()),
+                        MaterialPageRoute(builder: (context) => UyelikPaketleri()),
                       );
                     },
                     child: Padding(
@@ -178,7 +181,7 @@ class MenuFirma extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Egitim()),
+                        MaterialPageRoute(builder: (context) => Siparisler()),
                       );
                     },
                     child: Padding(
