@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:igi/pages/ilan_ekle.dart';
+import 'package:igi/unused/ilan_ekle.dart';
 import 'package:igi/services/size_config.dart';
+
+import 'ilan_ekle2.dart';
 
 class Ekle extends StatefulWidget {
   @override
@@ -49,7 +51,8 @@ class _EkleState extends State<Ekle> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => IlanEkle()),
+                //MaterialPageRoute(builder: (context) => IlanEkle()),
+                MaterialPageRoute(builder: (context) => IlanEkle2()),
               );
             },
             child: Padding(
