@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/ilan_portfoy.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/anasayfa_card.dart';
+import 'package:provider/provider.dart';
 
 class AnaSayfa extends StatefulWidget {
   @override
@@ -8,11 +10,12 @@ class AnaSayfa extends StatefulWidget {
 }
 
 class _AnaSayfaState extends State<AnaSayfa> {
-
   SizeConfig c = SizeConfig();
 
   @override
   Widget build(BuildContext context) {
+    IlanPortfoy ilanPortfoy = Provider.of<IlanPortfoy>(context);
+
     return Container(
       color: Colors.white,
       height: MediaQuery.of(context).size.height,
@@ -25,7 +28,7 @@ class _AnaSayfaState extends State<AnaSayfa> {
           Row(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(left:c.width(20.0)),
+                padding: EdgeInsets.only(left: c.width(20.0)),
                 child: Text(
                   "Anasayfa",
                   style: TextStyle(
@@ -38,36 +41,48 @@ class _AnaSayfaState extends State<AnaSayfa> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left:c.width(200.0)),
+                padding: EdgeInsets.only(left: c.width(200.0)),
                 child: Container(
                   width: c.width(25.748046875),
                   height: c.height(17.1650390625),
-                  decoration: BoxDecoration(image: DecorationImage(
-                    image: AssetImage('assets/icons/anasayfa_sort_icon.png'),
-                    fit: BoxFit.cover,
-                  ),),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/icons/anasayfa_sort_icon.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left:c.width(20.0)),
+                padding: EdgeInsets.only(left: c.width(20.0)),
                 child: Container(
-                    width: c.width(24.45703125),
-                    height: c.height(21.969757080078125),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/icons/anasayfa_arrow_icon.png'),
-                        fit: BoxFit.cover,
-                      ),
+                  width: c.width(24.45703125),
+                  height: c.height(21.969757080078125),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/icons/anasayfa_arrow_icon.png'),
+                      fit: BoxFit.cover,
                     ),
+                  ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: c.height(50),),
-          AnasayfaCard(),
-          AnasayfaCard(),
-          AnasayfaCard(),
-          AnasayfaCard(),
+          SizedBox(
+            height: c.height(50),
+          ),
+//          AnasayfaCard(),
+//          AnasayfaCard(),
+//          AnasayfaCard(),
+//          AnasayfaCard(),
+          Container(
+            height: MediaQuery.of(context).size.height * .7,
+            child: ListView.builder(
+                itemCount: ilanPortfoy.ilanlar.length,
+                itemBuilder: (BuildContext context, int index){
+                  return AnasayfaCard(index);
+                }),
+          )
         ],
       ),
     );

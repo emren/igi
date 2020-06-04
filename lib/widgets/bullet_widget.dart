@@ -4,6 +4,10 @@ import 'package:igi/services/size_config.dart';
 class BulletWidget extends StatelessWidget {
 
   SizeConfig c = SizeConfig();
+  String text;
+
+  BulletWidget(this.text);
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,8 @@ class BulletWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left:c.width(10.0)),
             child: Text(
-              "Bayan",
+              text,
+              //"Bayan",
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Color(0xff000000),

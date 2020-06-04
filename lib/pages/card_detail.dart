@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/ilan_portfoy.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/bullet_widget.dart';
+import 'package:provider/provider.dart';
 
 class CardDetail extends StatelessWidget {
+  int index;
   SizeConfig c = SizeConfig();
+
+  CardDetail(this.index);
 
   @override
   Widget build(BuildContext context) {
+    IlanPortfoy ilanPortfoy = Provider.of<IlanPortfoy>(context);
+
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -63,7 +70,8 @@ class CardDetail extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: c.width(20.0)),
                   child: Text(
-                    "Güzellik Uzmanı",
+                    //"Güzellik Uzmanı",
+                    ilanPortfoy.ilanGetir(index).unvan,
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff000000),
@@ -74,7 +82,7 @@ class CardDetail extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: c.width(150.0)),
+                  padding: EdgeInsets.only(left: c.width(120.0)),
                   child: Container(
                     width: c.width(14.7265625),
                     height: c.height(18),
@@ -89,7 +97,8 @@ class CardDetail extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: c.width(10.0)),
                   child: Text(
-                    "Berlin",
+                    //"Berlin",
+                    ilanPortfoy.ilanGetir(index).il,
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff000000),
@@ -108,7 +117,8 @@ class CardDetail extends StatelessWidget {
                   left: c.width(20),
                   right: c.width(20)),
               child: Text(
-                "denemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedene",
+                ilanPortfoy.ilanGetir(index).ilanMetni,
+                //"denemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedenemedene",
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   color: Color(0xff000000),
@@ -133,20 +143,22 @@ class CardDetail extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: c.width(50.0)),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      BulletWidget(),
-                      BulletWidget(),
-                      BulletWidget(),
+                      BulletWidget(ilanPortfoy.ilanGetir(index).cinsiyet),
+                      BulletWidget(ilanPortfoy.ilanGetir(index).calismaSekli),
+                      BulletWidget(ilanPortfoy.ilanGetir(index).alinacakKisi.toString()),
                     ],
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: c.width(100.0)),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      BulletWidget(),
-                      BulletWidget(),
-                      BulletWidget(),
+                      BulletWidget(ilanPortfoy.ilanGetir(index).calismaSekli),
+                      BulletWidget(ilanPortfoy.ilanGetir(index).calismaSekli),
+                      BulletWidget(ilanPortfoy.ilanGetir(index).calismaSekli),
                     ],
                   ),
                 ),

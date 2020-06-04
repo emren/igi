@@ -1,8 +1,11 @@
+import 'package:after_init/after_init.dart';
 import 'package:flutter/material.dart';
+import 'package:igi/models/mapper.dart';
 import 'package:igi/pages/alarm.dart';
 import 'package:igi/pages/profil.dart';
 import 'package:igi/pages/pusula.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'anasayfa.dart';
 import 'ekle.dart';
@@ -12,7 +15,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with AfterInitMixin<Home>{
   int _currentindex = 0;
 
   final List<Widget> _children = [
@@ -33,6 +36,13 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentindex = index;
     });
+  }
+
+
+  @override
+  void didInitState() {
+    Mapper mapper = Provider.of<Mapper>(context);
+    mapper.initMapper();
   }
 
   @override

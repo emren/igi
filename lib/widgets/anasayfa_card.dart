@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/ilan_portfoy.dart';
 import 'package:igi/pages/card_detail.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 class AnasayfaCard extends StatelessWidget {
+  int index;
   SizeConfig c = SizeConfig();
+
+  AnasayfaCard(this.index);
 
   @override
   Widget build(BuildContext context) {
+    IlanPortfoy ilanPortfoy = Provider.of<IlanPortfoy>(context);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CardDetail()),
+          MaterialPageRoute(builder: (context) => CardDetail(index)),
         );
       },
       child: Padding(
@@ -44,7 +51,8 @@ class AnasayfaCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Uzman Estetisyen Aranıyor",
+                      //"Uzman Estetisyen Aranıyor",
+                      ilanPortfoy.ilanGetir(index).ilanBaslik,
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         color: Color(0xff000000),
@@ -82,7 +90,8 @@ class AnasayfaCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: c.width(10.0)),
                 child: Text(
-                  "Berlin",
+                  //"Berlin",
+                  ilanPortfoy.ilanGetir(index).il,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     color: Color(0xff000000),
