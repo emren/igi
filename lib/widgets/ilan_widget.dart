@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/ilan_portfoy.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/pages/ilan_detay.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 class IlanWidget extends StatelessWidget {
   SizeConfig c = SizeConfig();
+  int index;
+
+  IlanWidget(this.index);
 
   @override
   Widget build(BuildContext context) {
+    IlanPortfoy ilanPortfoy = Provider.of<IlanPortfoy>(context);
+    Kullanici kullanici = Provider.of<Kullanici>(context);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -31,7 +40,8 @@ class IlanWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: c.width(10.0)),
                 child: Text(
-                  "Güzellik Uzmanı",
+                  ilanPortfoy.kullaniciIlanlari(kullanici.kullanici)[index].unvan,
+                  //"Güzellik Uzmanı",
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     color: Color(0xff000000),

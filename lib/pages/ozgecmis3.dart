@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'ozgecmis4.dart';
 
 class Ozgecmis3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     SizeConfig c = SizeConfig();
 
     return Scaffold(
@@ -92,6 +95,7 @@ class Ozgecmis3 extends StatelessWidget {
               children: <Widget>[
                 GestureDetector(
                   onTap: (){
+                    kullanici.kullanici.ozgecmis.egitim = 'Universite';
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Ozgecmis4()),
@@ -121,24 +125,33 @@ class Ozgecmis3 extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: c.width(20.0)),
-                  child: Container(
-                    width: c.width(77.607421875),
-                    height: c.height(28),
-                    decoration: BoxDecoration(
-                      color: Color(0xff395aff),
-                      borderRadius: BorderRadius.circular(23),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Hayır",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          color: Color(0xffffffff),
-                          fontSize: c.font(18),
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
+                GestureDetector(
+                  onTap: (){
+                    kullanici.kullanici.ozgecmis.egitim = 'Lise';
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Ozgecmis4()),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: c.width(20.0)),
+                    child: Container(
+                      width: c.width(77.607421875),
+                      height: c.height(28),
+                      decoration: BoxDecoration(
+                        color: Color(0xff395aff),
+                        borderRadius: BorderRadius.circular(23),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Hayır",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Color(0xffffffff),
+                            fontSize: c.font(18),
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                          ),
                         ),
                       ),
                     ),

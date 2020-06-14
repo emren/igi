@@ -2,8 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/basvuru_widget.dart';
 
-class ReklamVer extends StatelessWidget {
+class ReklamVer extends StatefulWidget {
+  @override
+  _ReklamVerState createState() => _ReklamVerState();
+}
+
+class _ReklamVerState extends State<ReklamVer> {
   SizeConfig c = SizeConfig();
+  TextEditingController _adController;
+  TextEditingController _epostaController;
+  TextEditingController _telefonController;
+  TextEditingController _aciklamaController;
+  String _ad;
+  String _eposta;
+  String _telefon;
+  String _aciklama;
+  FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _adController = TextEditingController();
+    _epostaController = TextEditingController();
+    _telefonController = TextEditingController();
+    _aciklamaController = TextEditingController();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _adController.dispose();
+    _epostaController.dispose();
+    _telefonController.dispose();
+    _aciklamaController.dispose();
+    _focusNode.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,19 +86,6 @@ class ReklamVer extends StatelessWidget {
                           ),
                         ),
                       ),
-//                      Padding(
-//                        padding: EdgeInsets.only(left: c.width(180.0)),
-//                        child: Text(
-//                          "hesap ayarları",
-//                          style: TextStyle(
-//                            fontFamily: 'Poppins',
-//                            color: Color(0xff000000),
-//                            fontSize: c.font(20),
-//                            fontWeight: FontWeight.w700,
-//                            fontStyle: FontStyle.normal,
-//                          ),
-//                        ),
-//                      ),
                     ],
                   ),
                 ),
@@ -79,6 +100,11 @@ class ReklamVer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     TextField(
+                      controller: _adController,
+                      onSubmitted: (isim) {
+                        _ad = isim;
+                      },
+                      autocorrect: false,
                       decoration: InputDecoration(
                         labelText: 'Adınız',
                         labelStyle: TextStyle(
@@ -91,6 +117,11 @@ class ReklamVer extends StatelessWidget {
                       ),
                     ),
                     TextField(
+                      controller: _epostaController,
+                      onSubmitted: (eposta) {
+                        _eposta = eposta;
+                      },
+                      autocorrect: false,
                       decoration: InputDecoration(
                         labelText: 'E-Posta',
                         labelStyle: TextStyle(
@@ -103,6 +134,11 @@ class ReklamVer extends StatelessWidget {
                       ),
                     ),
                     TextField(
+                      controller: _telefonController,
+                      onSubmitted: (tel) {
+                        _telefon = tel;
+                      },
+                      autocorrect: false,
                       decoration: InputDecoration(
                         labelText: 'Telefon',
                         labelStyle: TextStyle(
@@ -142,6 +178,33 @@ class ReklamVer extends StatelessWidget {
                                 blurRadius: 6,
                                 spreadRadius: 0),
                           ],
+                        ),
+                        child: TextField(
+                          controller: _aciklamaController,
+                          onSubmitted: (metin) {
+                            _aciklama = metin;
+                          },
+                          autocorrect: false,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          focusNode: _focusNode,
+                          autofocus: false,
+                          onEditingComplete: () {
+                            _focusNode.unfocus();
+                          },
+                          textInputAction: TextInputAction.done,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.only(
+                                left: c.width(15),
+                                bottom: c.height(11),
+                                top: c.height(11),
+                                right: c.width(15)),
+                          ),
                         ),
                       ),
                     ),

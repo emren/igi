@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'ozgecmis5.dart';
 
-class Ozgecmis4 extends StatelessWidget {
+class Ozgecmis4 extends StatefulWidget {
+  @override
+  _Ozgecmis4State createState() => _Ozgecmis4State();
+}
+
+class _Ozgecmis4State extends State<Ozgecmis4> {
+  String _unvanValue;
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     SizeConfig c = SizeConfig();
 
     return Scaffold(
@@ -103,21 +112,63 @@ class Ozgecmis4 extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: EdgeInsets.only(left: c.width(150.0)),
+                padding: EdgeInsets.only(left: c.width(5.0)),
                 child: Container(
-                  width: c.width(18.765625),
-                  height: c.height(10.7412109375),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/icons/dropdown_icon_black.png'),
-                      //fit: BoxFit.cover,
+//                  width: c.width(18.765625),
+//                  height: c.height(10.7412109375),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+//                      hint: Text(
+//                        '  Seçiniz',
+//                        style: TextStyle(
+//                          fontFamily: 'Poppins',
+//                          color: Color(0xff9f9f9f),
+//                          fontSize: c.font(16),
+//                          fontWeight: FontWeight.w700,
+//                          fontStyle: FontStyle.normal,
+//                        ),
+//                      ),
+                      isExpanded: true,
+                      value: _unvanValue,
+                      icon:
+                      Image.asset('assets/icons/dropdown_icon_black.png'),
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Color(0xff9f9f9f),
+                        fontSize: c.font(16),
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          _unvanValue = newValue;
+                        });
+                      },
+                      items: <String>[
+                        'Microblading Uzmani',
+                        'Cilt Bakim Uzmani',
+                        'Ipek Kirpik Uzmani',
+                        'Kalici Makyaj Uzmani',
+                        'Erkek Kuaforu',
+                        'Bayan Kuaforu',
+                        'Guzellik Uzmani',
+                        'Diyetisyen',
+                        'Estetisyen'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text('  ' + value),
+                        );
+                      }).toList(),
                     ),
                   ),
                 ),
               ),
             ),
+
             GestureDetector(
               onTap: (){
+                kullanici.kullanici.ozgecmis.unvan = _unvanValue;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Ozgecmis5()),

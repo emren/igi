@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
+import 'package:igi/models/mapper.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'ozgecmis4.dart';
 import 'ozgecmis9.dart';
 
-class Ozgecmis8 extends StatelessWidget {
+class Ozgecmis8 extends StatefulWidget {
+  @override
+  _Ozgecmis8State createState() => _Ozgecmis8State();
+}
+
+class _Ozgecmis8State extends State<Ozgecmis8> {
+  String _ilValue;
+  String _ilceValue;
+  bool ilSelected = false;
+
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
+    Mapper mapper = Provider.of<Mapper>(context);
     SizeConfig c = SizeConfig();
 
     return Scaffold(
@@ -108,14 +122,48 @@ class Ozgecmis8 extends StatelessWidget {
                       ],
                     ),
                     child: Padding(
-                      padding: EdgeInsets.only(left: c.width(70.0)),
+                      padding: EdgeInsets.only(left: c.width(10.0)),
                       child: Container(
                         width: c.width(18.765625),
                         height: c.height(10.7412109375),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+//                            hint: Text(
+//                              '  Seçiniz',
+//                              style: TextStyle(
+//                                fontFamily: 'Poppins',
+//                                color: Color(0xff9f9f9f),
+//                                fontSize: c.font(16),
+//                                fontWeight: FontWeight.w700,
+//                                fontStyle: FontStyle.normal,
+//                              ),
+//                            ),
+                            isExpanded: true,
+                            value: _ilValue,
+                            icon: Image.asset(
                                 'assets/icons/dropdown_icon_black.png'),
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Color(0xff9f9f9f),
+                              fontSize: c.font(16),
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                _ilceValue = null;
+                                _ilValue = newValue;
+                                ilSelected = true;
+                              });
+                            },
+                            items: mapper
+                                .getSortedIlIsimleri()
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text('  ' + value),
+                              );
+                            }).toList(),
                           ),
                         ),
                       ),
@@ -139,14 +187,51 @@ class Ozgecmis8 extends StatelessWidget {
                       ],
                     ),
                     child: Padding(
-                      padding: EdgeInsets.only(left: c.width(70.0)),
+                      padding: EdgeInsets.only(left: c.width(10.0)),
                       child: Container(
                         width: c.width(18.765625),
                         height: c.height(10.7412109375),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+//                            hint: Text(
+//                              '  Seçiniz',
+//                              style: TextStyle(
+//                                fontFamily: 'Poppins',
+//                                color: Color(0xff9f9f9f),
+//                                fontSize: c.font(16),
+//                                fontWeight: FontWeight.w700,
+//                                fontStyle: FontStyle.normal,
+//                              ),
+//                            ),
+                            isExpanded: true,
+                            value: _ilceValue,
+                            icon: Image.asset(
                                 'assets/icons/dropdown_icon_black.png'),
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Color(0xff9f9f9f),
+                              fontSize: c.font(16),
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                            ),
+                            onChanged: ilSelected
+                                ? (String newValue) {
+                              setState(() {
+                                _ilceValue = newValue;
+                              });
+                            }
+                                : null,
+                            items: ilSelected
+                                ? mapper
+                                .getSortedIlceIsimleri(_ilValue)
+                                .map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text('  ' + value),
+                                  );
+                                }).toList()
+                                : null,
                           ),
                         ),
                       ),
@@ -160,6 +245,9 @@ class Ozgecmis8 extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                kullanici.kullanici.ozgecmis.yasadigiIl = _ilValue;
+                kullanici.kullanici.ozgecmis.yasadigiIlce = _ilceValue;
+                kullanici.kullanici.ozgecmisVarmi = true;
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Ozgecmis9()),

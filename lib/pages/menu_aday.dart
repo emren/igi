@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/pages/aday_ayarlar.dart';
 import 'package:igi/pages/favori_ilan.dart';
+import 'package:igi/pages/onboarding.dart';
 import 'package:igi/pages/ozgecmis1.dart';
+import 'package:igi/pages/ozgecmis_cv.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'basvuru.dart';
 import 'egitim.dart';
@@ -10,6 +14,7 @@ import 'egitim.dart';
 class MenuAday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     SizeConfig c = SizeConfig();
 
     return Scaffold(
@@ -134,10 +139,17 @@ class MenuAday extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Ozgecmis1()),
-                      );
+                      kullanici.kullanici.ozgecmisVarmi
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OzgecmisCv()),
+                            )
+                          : Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Ozgecmis1()),
+                            );
                     },
                     child: Padding(
                       padding: EdgeInsets.only(
@@ -313,7 +325,13 @@ class MenuAday extends StatelessWidget {
                 ],
               ),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  kullanici.cikisYap();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Onboarding()),
+                  );
+                },
                 child: Padding(
                   padding: EdgeInsets.only(
                       top: c.height(8), left: c.width(20), right: c.width(20)),

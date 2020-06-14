@@ -62,7 +62,8 @@ class AnasayfaCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Selen Güzellik Akademi",
+                      ilanPortfoy.ilanGetir(index).ilanVeren.firmaAdi,
+                      //"Selen Güzellik Akademi",
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         color: Color(0xff000000),

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
+import 'package:igi/pages/menu_aday.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
+import 'home.dart';
 import 'ozgecmis4.dart';
 
 class OzgecmisCv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     SizeConfig c = SizeConfig();
 
     return Scaffold(
@@ -21,7 +26,12 @@ class OzgecmisCv extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  //MaterialPageRoute(builder: (context) => MenuAday()),
+                  MaterialPageRoute(builder: (context) => Home()),
+                );
+                //Navigator.pop(context);
               },
               child: Container(
                 height: c.height(50),
@@ -74,7 +84,7 @@ class OzgecmisCv extends StatelessWidget {
               height: c.height(100),
             ),
             Padding(
-              padding: EdgeInsets.only(left:c.width(100.0)),
+              padding: EdgeInsets.only(left: c.width(100.0)),
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
@@ -88,7 +98,9 @@ class OzgecmisCv extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: "Arzu Gök",
+                    text: kullanici.kullanici.ad,
+                    //+ ' ' + kullanici.kullanici.soyad,
+                    //text: "Arzu Gök",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff395aff),
@@ -104,7 +116,7 @@ class OzgecmisCv extends StatelessWidget {
               height: c.height(20),
             ),
             Padding(
-              padding: EdgeInsets.only(left:c.width(100.0)),
+              padding: EdgeInsets.only(left: c.width(100.0)),
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
@@ -117,7 +129,8 @@ class OzgecmisCv extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       )),
                   TextSpan(
-                    text: "Lise Mezunu",
+                    text: kullanici.kullanici.ozgecmis.egitim + ' Mezunu',
+                    //text: "Lise Mezunu",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff395aff),
@@ -133,7 +146,7 @@ class OzgecmisCv extends StatelessWidget {
               height: c.height(20),
             ),
             Padding(
-              padding: EdgeInsets.only(left:c.width(100.0)),
+              padding: EdgeInsets.only(left: c.width(100.0)),
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
@@ -146,7 +159,8 @@ class OzgecmisCv extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       )),
                   TextSpan(
-                    text: "Tecrübeli",
+                    text: kullanici.kullanici.ozgecmis.tecrube,
+                    //text: "Tecrübeli",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff395aff),
@@ -162,7 +176,7 @@ class OzgecmisCv extends StatelessWidget {
               height: c.height(20),
             ),
             Padding(
-              padding: EdgeInsets.only(left:c.width(100.0)),
+              padding: EdgeInsets.only(left: c.width(100.0)),
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
@@ -175,7 +189,10 @@ class OzgecmisCv extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       )),
                   TextSpan(
-                    text: "Evet",
+                    text: kullanici.kullanici.ozgecmis.calisiyormu
+                        ? 'Evet'
+                        : 'Hayir',
+                    //text: "Evet",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff395aff),
@@ -191,7 +208,7 @@ class OzgecmisCv extends StatelessWidget {
               height: c.height(20),
             ),
             Padding(
-              padding: EdgeInsets.only(left:c.width(100.0)),
+              padding: EdgeInsets.only(left: c.width(100.0)),
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
@@ -204,7 +221,8 @@ class OzgecmisCv extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       )),
                   TextSpan(
-                    text: "Kadın",
+                    text: kullanici.kullanici.ozgecmis.cinsiyet,
+                    //text: "Kadın",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff395aff),
@@ -220,7 +238,7 @@ class OzgecmisCv extends StatelessWidget {
               height: c.height(20),
             ),
             Padding(
-              padding: EdgeInsets.only(left:c.width(100.0)),
+              padding: EdgeInsets.only(left: c.width(100.0)),
               child: RichText(
                 text: TextSpan(children: [
                   TextSpan(
@@ -233,7 +251,10 @@ class OzgecmisCv extends StatelessWidget {
                         fontStyle: FontStyle.normal,
                       )),
                   TextSpan(
-                    text: "Ataşehir - Merkez",
+                    text: kullanici.kullanici.ozgecmis.yasadigiIl +
+                        ' - ' +
+                        kullanici.kullanici.ozgecmis.yasadigiIlce,
+                    //text: "Ataşehir - Merkez",
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Color(0xff395aff),

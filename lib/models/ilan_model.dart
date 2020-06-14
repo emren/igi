@@ -1,4 +1,7 @@
+import 'package:igi/models/kullanici_model.dart';
+
 class IlanModel {
+  KullaniciModel ilanVeren;
   String ilanBaslik;
   String unvan;
   String il;
@@ -10,7 +13,8 @@ class IlanModel {
   String ilanMetni;
 
   IlanModel(
-      {this.ilanBaslik,
+      {this.ilanVeren,
+      this.ilanBaslik,
       this.unvan,
       this.il,
       this.ilce,
@@ -32,13 +36,15 @@ class IlanModel {
         ilce +
         '\nCinsiyet: ' +
         cinsiyet +
-        '\nCalisma Sekli: ' +
+        '\nCalisma sekli: ' +
         calismaSekli +
         '\nTecrube: ' +
         tecrube.toString() +
-        '\nAlinacak Kisi: ' +
+        '\nAlinacak kisi: ' +
         alinacakKisi.toString() +
         '\nMetin: ' +
-        ilanMetni);
+        ilanMetni +
+        '\nIlan veren: ' +
+        ilanVeren.toString());
   }
 }

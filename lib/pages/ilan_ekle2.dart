@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:igi/models/ilan_model.dart';
 import 'package:igi/models/ilan_portfoy.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/models/mapper.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:provider/provider.dart';
@@ -44,6 +45,7 @@ class _IlanEkle2State extends State<IlanEkle2> {
   Widget build(BuildContext context) {
     Mapper mapper = Provider.of<Mapper>(context);
     IlanPortfoy ilanPortfoy = Provider.of<IlanPortfoy>(context);
+    Kullanici kullanici = Provider.of<Kullanici>(context);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -773,6 +775,7 @@ class _IlanEkle2State extends State<IlanEkle2> {
               GestureDetector(
                 onTap: () {
                   IlanModel yeniIlan = IlanModel(
+                    ilanVeren: kullanici.kullanici,
                     ilanBaslik: _baslik,
                     unvan: _unvanValue,
                     il: _ilValue,

@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/ilan_portfoy.dart';
+import 'package:igi/models/kullanici.dart';
+import 'package:igi/pages/ilan_ekle2.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/basvuru_widget.dart';
 import 'package:igi/widgets/ilan_widget.dart';
+import 'package:provider/provider.dart';
 
-class Ilanlar extends StatelessWidget {
+class Ilanlar extends StatefulWidget {
+  @override
+  _IlanlarState createState() => _IlanlarState();
+}
+
+class _IlanlarState extends State<Ilanlar> {
   SizeConfig c = SizeConfig();
 
   @override
   Widget build(BuildContext context) {
+    IlanPortfoy ilanPortfoy = Provider.of<IlanPortfoy>(context);
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -91,49 +102,58 @@ class Ilanlar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    width: c.width(110.607421875),
-                    height: c.height(35),
-                    decoration: BoxDecoration(
-                        color: Color(0xffffd500),
-                        borderRadius: BorderRadius.circular(23)),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: c.width(10.0)),
-                          child: Container(
-                            width: c.width(18),
-                            height: c.height(18),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/icons/ilan_ekle_icon.png'),
-                                fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => IlanEkle2()),
+                      );
+                    },
+                    child: Container(
+                      width: c.width(110.607421875),
+                      height: c.height(35),
+                      decoration: BoxDecoration(
+                          color: Color(0xffffd500),
+                          borderRadius: BorderRadius.circular(23)),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(left: c.width(10.0)),
+                            child: Container(
+                              width: c.width(18),
+                              height: c.height(18),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/icons/ilan_ekle_icon.png'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: c.width(10.0)),
-                          child: Text(
-                            "İlan ekle",
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Color(0xff000000),
-                              fontSize: c.font(14),
-                              fontWeight: FontWeight.w700,
-                              fontStyle: FontStyle.normal,
+                          Padding(
+                            padding: EdgeInsets.only(left: c.width(10.0)),
+                            child: Text(
+                              "İlan ekle",
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                color: Color(0xff000000),
+                                fontSize: c.font(14),
+                                fontWeight: FontWeight.w700,
+                                fontStyle: FontStyle.normal,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Positioned(
                     top: c.height(3),
                     left: c.width(120),
                     child: Text(
-                      "12",
+                      ilanPortfoy.kullaniciIlanlari(kullanici.kullanici).length.toString(),
+                      //"12",
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         color: Color(0xff000000),
@@ -146,11 +166,16 @@ class Ilanlar extends StatelessWidget {
                 ],
               ),
             ),
-            IlanWidget(),
-            IlanWidget(),
-            IlanWidget(),
-            IlanWidget(),
-            IlanWidget(),
+            Container(
+              height: MediaQuery.of(context).size.height * .7,
+              child: ListView.builder(
+                  //itemCount: ilanPortfoy.ilanlar.length,
+                  itemCount:
+                      ilanPortfoy.kullaniciIlanlari(kullanici.kullanici).length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return IlanWidget(index);
+                  }),
+            )
           ],
         ),
       ),

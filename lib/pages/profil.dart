@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
+import 'package:igi/models/kullanici_portfoy.dart';
 import 'package:igi/pages/menu_firma.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/profil_widget.dart';
+import 'package:provider/provider.dart';
 
 import 'menu_aday.dart';
 
@@ -12,8 +15,10 @@ class Profil extends StatefulWidget {
 
 class _ProfilState extends State<Profil> {
   SizeConfig c = SizeConfig();
+
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     return Container(
       color: Colors.white,
       height: MediaQuery.of(context).size.height,
@@ -64,8 +69,9 @@ class _ProfilState extends State<Profil> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      //MaterialPageRoute(builder: (context) => MenuAday()),
-                      MaterialPageRoute(builder: (context) => MenuFirma()),
+                      kullanici.kullanici.isFirma
+                          ? MaterialPageRoute(builder: (context) => MenuFirma())
+                          : MaterialPageRoute(builder: (context) => MenuAday()),
                     );
                   },
                   child: Padding(
@@ -75,11 +81,11 @@ class _ProfilState extends State<Profil> {
                         height: c.height(24),
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/icons/burger_icon_white.png'),
+                            image: AssetImage(
+                                'assets/icons/burger_icon_white.png'),
                             fit: BoxFit.cover,
                           ),
-                        )
-                    ),
+                        )),
                   ),
                 )
               ],

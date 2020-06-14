@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/unused/ilan_ekle.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'ilan_ekle2.dart';
 
@@ -10,10 +12,12 @@ class Ekle extends StatefulWidget {
 }
 
 class _EkleState extends State<Ekle> {
+
   SizeConfig c = SizeConfig();
 
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     return Container(
       color: Colors.white,
       height: MediaQuery.of(context).size.height,
@@ -47,7 +51,7 @@ class _EkleState extends State<Ekle> {
               ),
             ),
           ),
-          GestureDetector(
+          kullanici.kullanici.isFirma ? GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
@@ -81,7 +85,7 @@ class _EkleState extends State<Ekle> {
                 ),
               ),
             ),
-          ),
+          ) : Container(),
         ],
       ),
     );

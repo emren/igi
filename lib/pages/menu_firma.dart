@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:igi/models/kullanici.dart';
 import 'package:igi/pages/aday_ayarlar.dart';
 import 'package:igi/pages/favori_ilan.dart';
 import 'package:igi/pages/ilanlar.dart';
+import 'package:igi/pages/onboarding.dart';
 import 'package:igi/pages/ozgecmis1.dart';
 import 'package:igi/pages/reklam_ver.dart';
 import 'package:igi/pages/siparisler.dart';
 import 'package:igi/pages/uyelik_paketleri.dart';
 import 'package:igi/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 import 'basvuru.dart';
 import 'egitim.dart';
@@ -15,6 +18,7 @@ import 'firma_ayarlar.dart';
 class MenuFirma extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Kullanici kullanici = Provider.of<Kullanici>(context);
     SizeConfig c = SizeConfig();
 
     return Scaffold(
@@ -318,7 +322,12 @@ class MenuFirma extends StatelessWidget {
                 ],
               ),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  kullanici.cikisYap();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Onboarding()));
+                },
                 child: Padding(
                   padding: EdgeInsets.only(
                       top: c.height(8), left: c.width(20), right: c.width(20)),
