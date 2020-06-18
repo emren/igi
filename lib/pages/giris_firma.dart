@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:igi/models/kullanici.dart';
 import 'package:igi/models/kullanici_model.dart';
 import 'package:igi/models/kullanici_portfoy.dart';
+import 'package:igi/services/api.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:provider/provider.dart';
 
@@ -214,6 +215,8 @@ class _GirisFirmaState extends State<GirisFirma> {
                 onTap: () {
                   if (_sifre == _sifreTekrar) {
                     print('sifre ok');
+                    kullaniciFirmaYarat(_firmaIsim ,_numara, _sifre)
+                        .then((value) => kullanici.setMongoKey(value));
                     KullaniciModel yeniKullanici = KullaniciModel(
                       isFirma: true,
                       gsm: _numara,

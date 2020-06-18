@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:igi/models/kullanici.dart';
+import 'package:igi/services/api.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/basvuru_widget.dart';
 import 'package:provider/provider.dart';
@@ -278,6 +279,7 @@ class _AdayAyarlarState extends State<AdayAyarlar> {
                   _telefon == null ? kullanici.kullanici.telefon : kullanici.kullanici.telefon = _telefon;
                   _faks == null ? kullanici.kullanici.faks : kullanici.kullanici.faks = _faks;
                   _gsm == null ? kullanici.kullanici.gsm : kullanici.kullanici.gsm = _gsm;
+                  kullaniciAdayGuncelle( kullanici.mongoKey,_isim, _soyisim, _eposta, _telefon, _faks, _gsm);
                   Navigator.of(context).pop();
 
                 },

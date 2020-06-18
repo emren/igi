@@ -3,6 +3,7 @@ import 'package:igi/models/ilan_model.dart';
 import 'package:igi/models/ilan_portfoy.dart';
 import 'package:igi/models/kullanici.dart';
 import 'package:igi/models/mapper.dart';
+import 'package:igi/services/api.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:provider/provider.dart';
 
@@ -51,8 +52,14 @@ class _IlanEkle2State extends State<IlanEkle2> {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -128,7 +135,7 @@ class _IlanEkle2State extends State<IlanEkle2> {
               ),
               Padding(
                 padding:
-                    EdgeInsets.only(left: c.width(50.0), right: c.width(50)),
+                EdgeInsets.only(left: c.width(50.0), right: c.width(50)),
                 child: TextField(
                   controller: _baslikController,
                   onSubmitted: (baslik) {
@@ -158,7 +165,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                   height: c.height(31.16748046875),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(23),
-                    border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                    border: Border.all(
+                        color: Color(0xff9f9f9f), width: c.width(2)),
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -181,7 +189,7 @@ class _IlanEkle2State extends State<IlanEkle2> {
                         isExpanded: true,
                         value: _unvanValue,
                         icon:
-                            Image.asset('assets/icons/dropdown_icon_gray.png'),
+                        Image.asset('assets/icons/dropdown_icon_gray.png'),
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Color(0xff9f9f9f),
@@ -257,7 +265,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                       height: c.height(31.16748046875),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(23),
-                        border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                        border: Border.all(color: Color(0xff9f9f9f),
+                            width: c.width(2)),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
@@ -315,7 +324,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                       height: c.height(31.16748046875),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(23),
-                        border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                        border: Border.all(color: Color(0xff9f9f9f),
+                            width: c.width(2)),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
@@ -348,21 +358,21 @@ class _IlanEkle2State extends State<IlanEkle2> {
                             ),
                             onChanged: ilSelected
                                 ? (String newValue) {
-                                    setState(() {
-                                      _ilceValue = newValue;
-                                    });
-                                  }
+                              setState(() {
+                                _ilceValue = newValue;
+                              });
+                            }
                                 : null,
                             items: ilSelected
                                 ? mapper
-                                    .getSortedIlceIsimleri(_ilValue)
-                                    .map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text('  ' + value),
-                                    );
-                                  }).toList()
+                                .getSortedIlceIsimleri(_ilValue)
+                                .map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text('  ' + value),
+                                  );
+                                }).toList()
                                 : null,
                           ),
                         ),
@@ -413,7 +423,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                       height: c.height(31.16748046875),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(23),
-                        border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                        border: Border.all(color: Color(0xff9f9f9f),
+                            width: c.width(2)),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
@@ -468,7 +479,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                       height: c.height(31.16748046875),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(23),
-                        border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                        border: Border.all(color: Color(0xff9f9f9f),
+                            width: c.width(2)),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
@@ -560,7 +572,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                       height: c.height(31.16748046875),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(23),
-                        border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                        border: Border.all(color: Color(0xff9f9f9f),
+                            width: c.width(2)),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
@@ -635,7 +648,8 @@ class _IlanEkle2State extends State<IlanEkle2> {
                       height: c.height(31.16748046875),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(23),
-                        border: Border.all(color: Color(0xff9f9f9f), width: c.width(2)),
+                        border: Border.all(color: Color(0xff9f9f9f),
+                            width: c.width(2)),
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
@@ -788,6 +802,17 @@ class _IlanEkle2State extends State<IlanEkle2> {
                   );
                   print(yeniIlan.toString());
                   ilanPortfoy.ilanEkle(yeniIlan);
+                  ilanYarat(
+                      kullanici.mongoKey,
+                      _baslik,
+                      _unvanValue,
+                      _ilValue,
+                      _ilceValue,
+                      _cinsiyetValue,
+                      _calismaValue,
+                      _tecrubeValue,
+                      _kisiValue,
+                      _metin);
                 },
                 child: Center(
                   child: Container(

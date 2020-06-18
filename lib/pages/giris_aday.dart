@@ -3,6 +3,7 @@ import 'package:igi/models/kullanici.dart';
 import 'package:igi/models/kullanici_model.dart';
 import 'package:igi/models/kullanici_portfoy.dart';
 import 'package:igi/models/ozgecmis_model.dart';
+import 'package:igi/services/api.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:provider/provider.dart';
 
@@ -216,6 +217,8 @@ class _GirisAdayState extends State<GirisAday> {
                 onTap: () {
                   if (_sifre == _sifreTekrar) {
                     print('sifre ok');
+                    kullaniciAdayYarat(_isimSoyisim ,_numara, _sifre)
+                        .then((value) => kullanici.setMongoKey(value));
                     KullaniciModel yeniKullanici = KullaniciModel(
                       isFirma: false,
                       gsm: _numara,

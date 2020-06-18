@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:igi/models/kullanici.dart';
+import 'package:igi/services/api.dart';
 import 'package:igi/services/size_config.dart';
 import 'package:igi/widgets/basvuru_widget.dart';
 import 'package:provider/provider.dart';
@@ -295,7 +296,6 @@ class _FirmaAyarlarState extends State<FirmaAyarlar> {
               ),
               GestureDetector(
                 onTap: () {
-
                   _firmaIsim == null
                       ? kullanici.kullanici.firmaAdi
                       : kullanici.kullanici.firmaAdi = _firmaIsim;
@@ -317,6 +317,8 @@ class _FirmaAyarlarState extends State<FirmaAyarlar> {
                   _gsm == null
                       ? kullanici.kullanici.gsm
                       : kullanici.kullanici.gsm = _gsm;
+                  kullaniciFirmaGuncelle(kullanici.mongoKey, _firmaIsim, _isim,
+                      _soyisim, _eposta, _telefon, _faks, _gsm);
                   Navigator.of(context).pop();
                 },
                 child: Container(
